@@ -1,106 +1,135 @@
-//class Money 向量类
+/*
+ 编程实现货币的加减运算，要求：
+ 定义一个类RMB ，包含元、角、分三个数据成员，编写友元函数重载运算符‘+’ 和 ‘-’，以实现货币的加减运算
+ 如：
+ 
+ input RMB1(yuan jiao fen)：1 2 7
+ input RMB2(yuan jiao fen)：6 3 4
+ Sum：7.61 yuan
+ Difference：-5.07 yuan
+ */
 #include <iostream>
 using namespace std;
 
-const int maxDigit = 10;
+//const int maxDigit = 10;
 
 class Money
 {
     friend istream & operator >> (istream & is, Money & obj);
     friend ostream & operator << (ostream & os, const Money & obj);
+    friend Money operator + (const Money & left, const Money & right);
+    friend Money operator - (const Money & left, const Money & right);
 private:
-    int group[maxDigit], digit;
+    int yuan, jiao, fen;
 public:
     //空构造函数（存在bug）
     Money()
     {
-        //group = {0};
-        digit = 1;
-    }
-    //构造函数
-    Money(int grp[], int dgt)
-    {
-        digit = dgt;
-        for (int i = 0; i < dgt; ++i)
-        {
-            group[i] = grp[i];
-        }
-    }
-    //拷贝构造函数
-    Money(const Money & obj)
-    {
-        digit = obj.digit;
-        for (int i = 0; i < obj.digit; ++i)
-        {
-            group[i] = obj.group[i];
-        }
-    }
-    //加法重载
-    Money operator + (const Money & rightV)
-    {
-        Money result = rightV; //调用了一次拷贝构造函数
-        for (int i = 0; i < digit; ++i)
-        {
-            result.group[i] = group[i] + rightV.group[i];
-        }
-        return result;
-    }
-    //减法重载
-    Money operator - (const Money & rightV)
-    {
-        Money result = rightV; //调用了一次拷贝构造函数
-        for (int i = 0; i < digit; ++i)
-        {
-            result.group[i] = group[i] - rightV.group[i];
-        }
-        return result;
-    }
-    //内积重载
-    int operator * (const Money & rightV)
-    {
-        int result = 0;
-        for (int i = 0; i < digit; ++i)
-        {
-            result += group[i] * rightV.group[i];
-        }
-        return result;
+        yuan = 0;
+        jiao = 0;
+        fen = 0;
+        //yuan, jiao, fen = 0, 0, 0;
     }
 };
-
-//输入重载，【输入方案不好，无法按需输入】
+//加法重载
+Money operator + (const Money & left, const Money & right)
+{
+    Money tmp;
+    tmp.fen += left.fen + right.fen;
+    if(tmp.fen > 9)
+    {
+        tmp.fen -= 10;
+        ++ tmp.jiao;
+    }
+    tmp.jiao += left.jiao + right.jiao;
+    if(tmp.jiao > 9)
+    {
+        tmp.jiao -= 10;
+        ++ tmp.yuan;
+    }
+    tmp.yuan += left.yuan + right.yuan;
+    return tmp;
+}
+//减法重载
+Money operator - (const Money & left, const Money & right)
+{
+    Money tmp;
+    if (
+        (left.yuan > right.yuan) or
+        (left.yuan == right.yuan and left.jiao > right.jiao) or
+        (left.jiao == right.jiao and left.fen > right.fen)
+        )
+    {
+        tmp.fen += left.fen - right.fen;
+        if(tmp.fen < 0)
+        {
+            tmp.fen += 10;
+            -- tmp.jiao;
+        }
+        tmp.jiao += left.jiao - right.jiao;
+        if(tmp.jiao < 0)
+        {
+            tmp.jiao += 10;
+            -- tmp.yuan;
+        }
+        tmp.yuan += left.yuan - right.yuan;
+    }
+    else
+    {
+        tmp.fen -= left.fen - right.fen;
+        if(tmp.fen < 0)
+        {
+            tmp.fen += 10;
+            -- tmp.jiao;
+        }
+        tmp.jiao -= left.jiao - right.jiao;
+        if(tmp.jiao < 0)
+        {
+            tmp.jiao += 10;
+            -- tmp.yuan;
+        }
+        tmp.yuan -= left.yuan - right.yuan;
+        
+        tmp.yuan = -tmp.yuan;
+    }
+    return tmp;
+}
+//输入重载
 istream & operator >> (istream & is, Money & obj)
 {
-    bool flag = true; char flag2;
-    for (int i = 0; flag; ++i)
+    char now = ' ';
+    int money[3] = {0, 0, 0};
+    for (int i = 0; now != '\n'; ++i)
     {
-        obj.group[i] = is.get() - 48;
-        flag2 = is.get();
-        if (flag2 == '\n') flag = false;
+        now = is.get();
+        if (now >= '0' and now <= '9')
+        {
+            money[i] = now - '0';
+        }
+        else -- i;
     }
+    obj.yuan = money[0];
+    obj.jiao = money[1];
+    obj.fen = money[2];
+    
     return is;
 }
 //输出重载
 ostream & operator << (ostream & os, const Money & obj)
 {
-    os << '(';
-    for (int i = 0; i < obj.digit; ++i) os << obj.group[i] << ',';
-    os << ')';
+    os << obj.yuan << '.' << obj.jiao << obj.fen;
     return os;
 }
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    int g1[] = {1, 2, 3}, g2[] = {4, 5, 6};
-    Money v1(g1, 3), v2(g2, 3),
-        v3(g2, 3);  //输入对应的对象，输入的向量维数须在这里指定（bug）
-    cout << v1 << v2 << endl;
-    cout << "v1 + v2 : " << v1 + v2 << endl;
-    cout << "v1 - v2 : " << v1 - v2 << endl;
-    cout << "v1 * v2 : " << v1 * v2 << endl;
-    cout << "input Money（单个空格分开数字，最后一个数字后直接回车，维数只能为3）: " << endl;
-    cin >> v3;
-    cout << "v3' : " << v3 << endl;
-    cout << "v1 + v3 : " << v1 + v3 << endl;
+    Money RMB1, RMB2;
+    cout << "input RMB1(yuan jiao fen)：";
+    cin >> RMB1;
+    cout << "input RMB2(yuan jiao fen)：";
+    cin >> RMB2;
+    
+    cout << "Sum: " << RMB1 + RMB2 << " yuan" << endl;
+    cout << "Difference: " << RMB1 - RMB2 << " yuan" << endl;
     return 0;
 }
