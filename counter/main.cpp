@@ -8,7 +8,7 @@
  3
  4
  Warning：5！
-*/
+ */
 
 #include <iostream>
 #include <time.h>
@@ -26,14 +26,15 @@ int main()
 {
     int number = 0;
     cout << "please enter a integer: ";
-    cin >> number;
+    cin >> number; //将数字读入
     
+    char next = cin.get();//读取末尾标识符
     if (
-        (cin.get() != '\n' and
-         cin.get() != '\t' and
-         cin.get() != ' ') and
-         number >= 0
-        )
+        (next != '\n' and
+         next != '\t' and
+         next != ' ') or
+        number <= 0
+        )//若输入不符合要求，或数字为负
     {
         cout << "Error!" << endl;
         return -1;
