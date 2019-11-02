@@ -3,8 +3,6 @@
 
 #include <stdio.h>
 
-#endif /* Stack_h */
-
 //栈的抽象类
 template <class elemType>
 class stack
@@ -36,5 +34,8 @@ public:
     int getLength() {return top_p + 1;}
     elemType* getElem() {return elem;}
 };
+
+
+#endif /* Stack_h */
 
 
