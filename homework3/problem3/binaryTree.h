@@ -4,35 +4,7 @@
 #include <iostream>
 
 template<class T>
-class bTree
-{
-public:
-    virtual void clear() = 0;
-    virtual bool isEmpty() const = 0;
-    virtual T Root(T flag) const = 0;
-    virtual T parent(T x, T flag) const = 0;
-    virtual T lchild(T x, T flag) const = 0;
-    virtual T rchild(T x, T flag) const = 0;
-    virtual void delLeft(T x) = 0;
-    virtual void delRight(T x) = 0;
-    virtual void preOrder() const = 0;
-    virtual void midOrder() const = 0;
-    virtual void postOrder() const= 0;
-    virtual void levelOrder() const = 0;
-};
-
-template <class elemType> class queue
-{
-public:
-    virtual bool isEmpty() = 0;
-    virtual void enQueue(const elemType &x) = 0;
-    virtual elemType deQueue() = 0;
-    virtual elemType getHead() = 0;
-    virtual ~queue() {}
-};
-
-template<class T>
-class binaryTree : public bTree<T>
+class binaryTree
 {
     friend void printTree(const binaryTree &t, T flag);
 private:
@@ -51,9 +23,9 @@ private:
 private:
     Node *find(T x, Node *t ) const;
     void clear(Node *&t) ;
-    void preOrder(Node *t) const;
-    void midOrder(Node *t) const;
-    void postOrder(Node *t) const;
+//    void preOrder(Node *t) const;
+//    void midOrder(Node *t) const;
+//    void postOrder(Node *t) const;
 
 public:
     binaryTree() : root(NULL) {}
@@ -66,44 +38,21 @@ public:
     T rchild(T x, T flag) const;
     void delLeft(T x) ;
     void delRight(T x);
-    void preOrder() const;
-    void midOrder() const;
-    void postOrder() const;
+    void preOrder(T* Order) const;
+    void midOrder(T* Order) const;
+    void postOrder(T* Order) const;
+    void preOrder(T* Order, Node *t) const;
+    void midOrder(T* Order, Node *t) const;
+    void postOrder(T* Order, Node *t) const;
+    
 //    void levelOrder() const;
-    void createTree(T flag);
-    T parent(T x, T flag) const { return flag; }
+//    void createTree(T flag);
+    void createTree(T num, T** nodes);
+//    T parent(T x, T flag) const { return flag; }
 };
 
 
-template <class elemType>
-class linkQueue: public queue<elemType>
-{
-private:
-    struct node
-    {
-        elemType data;
-        node *next;
-        node(const elemType &x, node *N = NULL)
-        { data = x; next = N;}
-        node():next(NULL) {}
-        ~node() {}
-    };
-    node *front, *rear;
-public:
-    linkQueue();
-    ~linkQueue();
-    bool isEmpty() const
-    { return front == NULL; }
-    void enQueue(const elemType &x)
-    {
-        if (rear == NULL)
-            front = rear = new node(x);
-        else
-            rear = rear->next = new node(x);
-    }
-    elemType deQueue() ;
-    elemType getHead() const;
-};
+
     
     
     

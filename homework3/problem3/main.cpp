@@ -1,50 +1,77 @@
 /*
  Problem 3
-二叉树以顺序存储的方式存储在一个三元数组中，要求编程实现二叉树的遍历。每个节点的存储格式为[Data,L,R]，Data代表节点的值（这里设为整数），L表示左子节点的下标编号，R表示右子节点的下标编号，编号从0开始，若该节点无左子节点或右子节点，则对应信息上的编号为-1。(30')
+二叉树以顺序存储的方式存储在一个三元数组中，要求编程实现二叉树的遍历。
+ 每个节点的存储格式为[Data,L,R]，Data代表节点的值（这里设为整数），
+ L表示左子节点的下标编号，R表示右子节点的下标编号，编号从0开始，
+ 若该节点无左子节点或右子节点，则对应信息上的编号为-1。(30')
 
 输入描述
-
 第1行输入节点个数num，个数为正整数。
-
 第2到num+1行，分别输入第1到num个节点的相关信息[Data,L,R]。
 
 输出描述
+输出共3行，第一行输出前序遍历节点各个节点数据的值，
+第二行输出中序遍历节点各个节点数据的值，第三行输出后序遍历节点各个节点数据的值，各节点数据之间以空格分隔。
 
-输出共3行，第一行输出前序遍历节点各个节点数据的值，第二行输出中序遍历节点各个节点数据的值，第三行输出后序遍历节点各个节点数据的值，各节点数据之间以空格分隔。
 
-注意：输入输出逻辑在附件代码中已给定，请不要修改。
-
-输入举例
+输入输出测试
 
 3
 100 -1 1
 30 2 -1
 -5 -1 -1
-输出举例
-
 100 30 -5
 100 -5 30
 -5 30 100
+Program ended with exit code: 0
+ 
+8
+1 1 2
+2 3 4
+3 -1 5
+4 -1 -1
+5 -1 -1
+6 6 -1
+7 -1 7
+8 -1 -1
+1 2 4 5 3 6 7 8
+4 2 5 1 3 7 8 6
+4 5 2 8 7 6 3 1
+Program ended with exit code: 0
+ 
+ 
+ 
  */
 
+#include "binaryTree.cpp"
 #include <iostream>
-#include "binaryTree.h"
-
 using namespace std;
 
 void preorder_tranversal(int num, int** nodes, int* preOrder) {
     // 请实现本函数
     // 函数逻辑请用二叉树类实现，并在本文件中引入相关头文件
+    binaryTree<int> myTree;
+    myTree.createTree(num, nodes);
+    for(int i = 0; i < num; ++i) *(preOrder + i) = 0;
+    myTree.preOrder(preOrder);
 }
 
 void midorder_tranversal(int num, int** nodes, int* midOrder) {
     // 请实现本函数
     // 函数逻辑请用二叉树类实现，并在本文件中引入相关头文件
+    binaryTree<int> myTree;
+    myTree.createTree(num, nodes);
+    for(int i = 0; i < num; ++i) *(midOrder + i) = 0;
+    myTree.midOrder(midOrder);
 }
 
 void postorder_tranversal(int num, int** nodes, int* postOrder) {
     // 请实现本函数
     // 函数逻辑请用二叉树类实现，并在本文件中引入相关头文件
+    binaryTree<int> myTree;
+    myTree.createTree(num, nodes);
+    for(int i = 0; i < num; ++i) *(postOrder + i) = 0;
+    myTree.postOrder(postOrder);
 }
 
 // main cannot be modified
