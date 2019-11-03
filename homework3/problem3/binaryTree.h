@@ -6,7 +6,6 @@
 template<class T>
 class binaryTree
 {
-    friend void printTree(const binaryTree &t, T flag);
 private:
     //二叉树的结点类
     struct Node
@@ -23,9 +22,6 @@ private:
 private:
     Node *find(T x, Node *t ) const;
     void clear(Node *&t) ;
-//    void preOrder(Node *t) const;
-//    void midOrder(Node *t) const;
-//    void postOrder(Node *t) const;
 
 public:
     binaryTree() : root(NULL) {}
@@ -44,11 +40,7 @@ public:
     void preOrder(T* Order, Node *t) const;
     void midOrder(T* Order, Node *t) const;
     void postOrder(T* Order, Node *t) const;
-    
-//    void levelOrder() const;
-//    void createTree(T flag);
     void createTree(T num, T** nodes);
-//    T parent(T x, T flag) const { return flag; }
 };
 
 
