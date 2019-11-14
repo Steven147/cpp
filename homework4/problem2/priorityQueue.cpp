@@ -55,9 +55,16 @@ void priorityQueue<Type>::buildHeap( )
 template <class Type>
 int priorityQueue<Type>::findMin(int x)
 {
+    int min = 0;
     for(int i = 1; i <= maxSize; ++i)
-        if(*(array + i) >= x) return i;
-    return 0;
+    {
+        if(*(array + i) >= x)
+        {
+            if(min == 0) min = i;
+            if(*(array + i) < *(array + min)) min = i;
+        }
+    }
+    return min;
 }
 
 template <class Type>
