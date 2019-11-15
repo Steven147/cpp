@@ -8,8 +8,7 @@ class priorityQueue
 private:
     int currentSize;
     Type *array;
-    int maxSize;
-    //void doubleSpace();
+    const int maxSize;
     
     void buildHeap();
     void percolateDown( int hole );

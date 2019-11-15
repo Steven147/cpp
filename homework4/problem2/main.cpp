@@ -21,12 +21,14 @@ int main() {
 
     /* before decrease key */
     int* a;
-//    = new int[N];
+    /* a should be a copy of array of priorityQueue */
     a = pq.getArray();
     for(int i=0;i<N;i++){
         cout<<a[i]<<' ';
     }
     cout<<endl;
+    
+    delete []a;
 
     /* decreaseKey() test */
     pq.decreaseKey(r, value);
@@ -44,7 +46,7 @@ int main() {
 
     /* free memory */
     delete []nodes;
-//    delete []a;
+    delete []a;
 
     return 0;
 }

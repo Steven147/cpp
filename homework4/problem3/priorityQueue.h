@@ -10,10 +10,10 @@ private:
     Type *array;
     int maxSize;
     //void doubleSpace();
-    
+
     void buildHeap();
     void percolateDown( int hole );
-    
+
 public:
     priorityQueue( int capacity = 100 )
     { array = new Type[capacity]; maxSize = capacity; currentSize = 0;}
@@ -22,7 +22,7 @@ public:
     bool isEmpty() const
     { return currentSize == 0; }
     Type getHead() { return array[1]; }
-    
+
     priorityQueue( const Type data[], int size );
     void enQueue( const Type & x );
     Type deQueue();

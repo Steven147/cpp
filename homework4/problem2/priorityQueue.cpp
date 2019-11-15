@@ -77,5 +77,7 @@ void priorityQueue<Type>::decreaseKey(int i, int value)
 template <class Type>
 int* priorityQueue<Type>::getArray()
 {
-    return array+1;
+    int* arr = new int[maxSize];
+    for(int i = 0; i < currentSize + 1; ++i) arr[i] = *(array + i + 1);
+    return arr;
 }
