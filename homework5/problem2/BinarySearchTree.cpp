@@ -125,3 +125,6 @@ const KEY & x, BinaryNode *t ) const { if ( t == nullptr || t->data.key == x )
 return (SET<KEY, OTHER> *) t;
 if( x < t->data.key ) return find( x, t->left ); else return find( x, t->right );
 }
+
+
+template class BinarySearchTree<int, char*>;

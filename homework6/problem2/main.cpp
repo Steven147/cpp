@@ -6,10 +6,13 @@ int find(int* sortedArray, int length, int sum, int** resultArray);
 
 int main(){
     //初始化
-    int length, sum, *array1, *array2, *resultArray[2];
+    int length, sum,
+    *array1, *array2,
+    *resultArray[2];
     std::cin >> length;
     array1 = new int[length];
     array2 = new int[length];
+    
     resultArray[0] = new int[length];//储存较小的数字
     resultArray[1] = new int[length];//储存较大的数字
 
@@ -20,8 +23,6 @@ int main(){
     }
     std::cin >> sum;
 
-    
-
     //寻找方法1
     sort1(array1, length);//排序1
     int num1 = find(array1, length, sum, resultArray);
@@ -31,7 +32,7 @@ int main(){
     std::cout << std::endl;
 
     //寻找方法2
-    sort2(array1, length);//排序2
+    sort2(array2, length);//排序2
     int num2 = find(array2, length, sum, resultArray);
     for(int i = 0; i < num2; ++i){//输出
         std::cout << '(' << *(resultArray[0] + i) << ',' << *(resultArray[1] + i) << ')';
@@ -46,15 +47,26 @@ int main(){
     return 0;
 }
 
-//简单插入排序 两层嵌套，时间复杂度为O(N^2)f
+//简单插入排序 两层嵌套，时间复杂度为O(N^2)
 void sort1(int* array, int length)
 { 
-    for(int i = 1; i < length; ++i){
-        int pos = 0, now = array[i];
-        while(now > array[pos]) ++pos;
-        for(int j = pos; j < i; ++j){
-            array[j+1] = array[j];
+    int now;
+    //从前往后遍历，将每个值插到左边序列中
+    for(int i = 1; i < length; ++i)
+    {
+        int pos = i;
+        //将值存下来
+        now = array[i];
+        //将前方大值往后移
+        for(int j = i-1; j >= 0; --j)
+        {
+            if(array[j] > now)
+            {
+                array[j+1] = array[j];
+                pos = j;
+            }
         }
+        //将存入的值填入
         array[pos] = now;
     }
 }
@@ -130,9 +142,6 @@ void sort2(int* array, int length)
     priorityQueue myQueue(array, length);
     for(int i = 0; i < length; ++i) array[i] = myQueue.deQueue();
 }
-
-
-
 
 int find(int* sortedArray, int length, int sum, int** resultArray)
 {

@@ -1,6 +1,7 @@
 #ifndef h
 #define h
 
+#include <iostream>
 
 template <class KEY, class OTHER>
 struct SET {
@@ -26,8 +27,7 @@ private:
         SET<KEY, OTHER> data;
         BinaryNode *left;
         BinaryNode *right;
-        BinaryNode(const SET<KEY, OTHER> & thedata,
-                   BinaryNode *lt= nullptr, BinaryNode *rt= nullptr ) :
+        BinaryNode(const SET<KEY, OTHER> & thedata, BinaryNode *lt= nullptr, BinaryNode *rt= nullptr ) :
         data( thedata ), left( lt ), right( rt ) {}
     };
     BinaryNode *root;

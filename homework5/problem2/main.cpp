@@ -1,6 +1,4 @@
 #include "BinarySearchTree.h"
-#include "BinarySearchTree.cpp"
-#include <iostream>
 
 const int charLength = 20;
 SET<int, char*>* mySet;
