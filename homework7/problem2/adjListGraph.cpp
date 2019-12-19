@@ -1,4 +1,5 @@
 # include "adjListGraph.h"
+
 template <class TypeOfVer, class TypeOfEdge> 
 adjListGraph<TypeOfVer, TypeOfEdge>::adjListGraph(int vSize, const TypeOfVer d[]) 
 {
@@ -64,4 +65,36 @@ bool adjListGraph<TypeOfVer, TypeOfEdge> ::exist(TypeOfVer x, TypeOfVer y) const
     while (p !=NULL && p->end != v) p = p->next;
     if (p == NULL) return false; 
     else return true; 
+}
+
+template <class TypeOfVer, class TypeOfEdge> 
+int adjListGraph<TypeOfVer, TypeOfEdge> ::find(TypeOfVer v) const
+{
+    for (int i = 0; i < Vers; ++i)
+    if (verList[i].ver == v) return i;
+} 
+
+template <class TypeOfVer, class TypeOfEdge>
+void adjListGraph<TypeOfVer, TypeOfEdge>::dfs() const
+{
+    bool *visited = new bool[Vers];
+    for (int i=0; i < Vers; ++i) visited[i] = false;
+    cout << "当前图的深度优先遍历序列为:" << endl; 
+    for (i = 0; i < Vers; ++i) {
+        if (visited[i] == true) continue; 
+        dfs(i, visited);
+        cout << endl;
+    } 
+}
+
+template <class TypeOfVer, class TypeOfEdge> 
+void adjListGraph<TypeOfVer, TypeOfEdge>::dfs(int start, bool visited[]) const
+{
+    edgeNode *p = verList[start].head; 
+    cout << verList[start].ver << '\t'; 
+    visited[start] = true;
+    while (p != NULL){  
+        if (visited[p->end] == false) dfs(p->end, visited);
+        p = p->next; 
+    }
 }
