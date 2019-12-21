@@ -51,30 +51,37 @@ using namespace std;
 
 int main()
 {
-    int iniList, i = 0;
-    int range[3] = {0, 0, '\0'};
+//    int iniList, i = 0;
+//    int range[3] = {0, 0, '\0'};
     sLinkList<int> myList;
-    bool flag = true;//判断是否读到回车
+//    bool flag = true;//判断是否读到回车
     
-    //对单链表进行初始化
-    while (flag and cin >> iniList)
-    {
-        myList.insert(myList.length(), iniList);
-        flag = cin.get()!='\n';//读到回车则下一次循环前跳出
-    }
-    flag = true;
-    
-    //储存所需范围
-    while (flag and cin >> iniList)
-    {
-        range[i] = iniList;
-        ++i;
-        flag = cin.get()!='\n';
-    }
-    //去除范围内的值，并且返回处理后链表的长度
-    cout << myList.erase(range[0], range[1]) << endl;
-    myList.traverse();//遍历
-    
+    myList.insert(0, -1);
+    myList.traverse();
+    myList.insert(0, -2);
+    myList.traverse();
+    myList.insert(1, -3);
+    myList.traverse();
+//
+//    //对单链表进行初始化
+//    while (flag and cin >> iniList)
+//    {
+//        myList.insert(myList.length(), iniList);
+//        flag = cin.get()!='\n';//读到回车则下一次循环前跳出
+//    }
+//    flag = true;
+//
+//    //储存所需范围
+//    while (flag and cin >> iniList)
+//    {
+//        range[i] = iniList;
+//        ++i;
+//        flag = cin.get()!='\n';
+//    }
+//    //去除范围内的值，并且返回处理后链表的长度
+//    cout << myList.erase(range[0], range[1]) << endl;
+//    myList.traverse();//遍历
+//
     return 0;
 }
 
