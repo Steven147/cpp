@@ -214,7 +214,7 @@ bool adjListGraph<TypeOfVer, TypeOfEdge>::findRoad(int start, int end, int *road
                 p = myStack.top().head;
             }
             else p = p->next;
-            found = (succeed == 5); //找到目标就直接跳出
+            found = (succeed == end); //找到目标就直接跳出
         }
         //出栈,并对出栈结点进行标记，直到顶部结点有后继
         while(p == nullptr and !found and !myStack.isEmpty()){
