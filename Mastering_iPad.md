@@ -1,6 +1,8 @@
-# 理工学生 iPad 完全指南
+# 1. 理工学生 iPad 完全指南
 
-## iPad学习环境搭建
+<!-- TOC -->autoauto- [1. 理工学生 iPad 完全指南](#1-理工学生-ipad-完全指南)auto    - [1.1. iPad学习环境搭建hah](#11-ipad学习环境搭建hah)auto        - [1.1.1. iPad 基础](#111-ipad-基础)auto        - [1.1.2. iPad + iCloud](#112-ipad--icloud)auto        - [1.1.3. iPad + 手写笔记软件 + Pencil](#113-ipad--手写笔记软件--pencil)auto        - [1.1.4. iPad + 常用内置应用](#114-ipad--常用内置应用)auto        - [1.1.5. iPad + 外置键盘](#115-ipad--外置键盘)autoauto<!-- /TOC -->
+
+## 1.1. iPad学习环境搭建hah
 
 用上了非常高大上的“环境搭建”一词，主要是想强调一点：作为一款电子消费品，iPad虽说入门门槛，但是想要高效利用iPad进行学习甚至工作，是需要付出**一定学习成本**的。
 
@@ -10,7 +12,7 @@
 我打算从iPad的**基础功能**说起，拓展到不同的iPad应用、iPad配件，最后完善成一整个系统，我们开始吧。
 
 
-### 一、iPad 基础
+### 1.1.1. iPad 基础
 
 > 我的配置：iPad 2018（6th）/ iOS 13.3 / 32GB
 
@@ -41,7 +43,7 @@
    2. airdrop：适用于苹果设备间快速传输较大文件。
 
 
-### 二、iPad + iCloud
+### 1.1.2. iPad + iCloud
 
 > 我的配置：iCloud 200G（200G以上可以家庭共享） 21¥/月
 
@@ -66,7 +68,7 @@
 > “~~如果你恰巧财力雄厚，不妨多买几个苹果组成全家桶......~~”
 
 
-### 三、iPad + 手写笔记软件 + Pencil
+### 1.1.3. iPad + 手写笔记软件 + Pencil
 
 > 我的配置：Apple Pencil 1代（用不了二代） + Goodnotes（界面好看）
 
@@ -105,11 +107,11 @@
 
         iCloud文件保存在系统自带文件app中，在电脑端下载任意PDF编辑软件，按传统方式编辑，在iPad上类似，从documents app中打开云盘中文件，利用documents自带的PDF编辑功能和pencil，能更方便的进行编辑。
 
-### 四、iPad + 常用内置应用
+### 1.1.4. iPad + 常用内置应用
 
 > 施工中，今儿累了
 
-### 五、iPad + 外置键盘
+### 1.1.5. iPad + 外置键盘
 
 > 我的配置：DOT@LOFREE 蓝牙机械键盘（Mac键位排布）
 
@@ -139,3 +141,5 @@
    * ```command + blankspace ``` 呼出全局搜索菜单：
 
         这一点和macOS统一，叫做spotlight搜索，如果习惯通过这个途径搜索打开应用、搜索网页/appstore/地图地址、搜索常用文件，能让iPad的使用效率接近笔记本。
+
+
